@@ -22,9 +22,9 @@ jobs:
       - name: Docker Build and push
         run: |
           unset DOCKER_CLI_ACI
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker build -t myntraclone .
           docker tag myntraclone pavangowdah/myntraclone:latest
-          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push pavangowdah/myntraclone:latest
         env:
           DOCKER_CLI_ACI: 1
