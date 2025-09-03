@@ -21,6 +21,7 @@ jobs:
         run: trivy fs . > trivyfs.txt
       - name: Docker Build and push
         run: |
+          unset DOCKER_CLI_ACI
           docker build -t myntraclone .
           docker tag myntraclone pavangowdah/myntraclone:latest
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
