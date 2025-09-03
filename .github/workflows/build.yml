@@ -41,7 +41,7 @@ jobs:
       - name: stop container
         run: docker stop myntraclone
       - name: remove image container
-        run: docker rmi myntraclone
+        run: docker rm myntraclone
       - name: Deploy to container
         run: docker run -d --name myntraclone -p 3000:3000 pavangowdah/myntraclone:latest
       - name: Update kubeconfig
